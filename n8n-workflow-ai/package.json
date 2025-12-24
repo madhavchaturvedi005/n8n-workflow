@@ -1,0 +1,19 @@
+{
+  "name": "n8n-workflow-ai",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "store": "node storeInQdrant.js",
+    "test-search": "node testsearch.js",
+    "test-api": "node test-api.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "openai": "^6.15.0"
+  }
+}

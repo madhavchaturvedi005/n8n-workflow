@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* n8n-inspired Design System - Purple/Magenta Theme */
+
+@layer base {
+  :root {
+    /* Deep purple/magenta background inspired by reference */
+    --background: 280 60% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 280 50% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 280 50% 14%;
+    --popover-foreground: 0 0% 95%;
+
+    /* n8n Coral/Orange - Primary action color */
+    --primary: 15 90% 60%;
+    --primary-foreground: 0 0% 5%;
+
+    /* Purple accent */
+    --secondary: 300 50% 45%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted purples */
+    --muted: 280 40% 18%;
+    --muted-foreground: 280 20% 60%;
+
+    /* Accent - warm coral */
+    --accent: 20 100% 65%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 280 30% 22%;
+    --input: 280 40% 15%;
+    --ring: 15 90% 60%;
+
+    --radius: 0.75rem;
+
+    /* n8n Node-specific tokens */
+    --node-bg: 280 40% 14%;
+    --node-border: 280 30% 28%;
+    --node-port: 15 90% 60%;
+    --node-connector: 280 30% 35%;
+    
+    /* Glow effects */
+    --glow-primary: 15 90% 60%;
+    --glow-secondary: 300 60% 50%;
+
+    --sidebar-background: 280 50% 10%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 15 90% 60%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 280 40% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 280 30% 22%;
+    --sidebar-ring: 15 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, hsl(280 60% 8%) 0%, hsl(300 50% 12%) 50%, hsl(280 50% 10%) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .node-shadow {
+    box-shadow: 0 4px 20px -4px hsl(var(--glow-primary) / 0.15);
+  }
+  
+  .node-shadow-hover {
+    box-shadow: 0 8px 30px -4px hsl(var(--glow-primary) / 0.25);
+  }
+
+  .connector-line {
+    background: linear-gradient(90deg, hsl(var(--node-connector)), hsl(var(--primary) / 0.5));
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px hsl(var(--glow-secondary) / 0.3);
+  }
+
+  .glassmorphism {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Typewriter cursor animation */
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .typewriter-cursor {
+    animation: blink 1s infinite;
+  }
+}
