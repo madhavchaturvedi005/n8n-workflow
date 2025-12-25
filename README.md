@@ -266,31 +266,64 @@ Expected output:
 
 ## 🚀 Deployment
 
-### **Frontend Deployment**
+### **Backend Deployment (Render)**
+
+1. **Create Render Account**: Sign up at [render.com](https://render.com)
+
+2. **Deploy Backend**:
+   ```bash
+   # Run deployment helper
+   ./deploy-backend.sh
+   ```
+
+3. **Configure Render Service**:
+   - **Service Type**: Web Service
+   - **Environment**: Node
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+4. **Set Environment Variables**:
+   ```env
+   NODE_ENV=production
+   PORT=10000
+   QDRANT_URL=https://your-qdrant-instance.com:6333
+   QDRANT_API_KEY=your_qdrant_api_key
+   OPENAI_API_KEY=sk-your_openai_api_key
+   GITHUB_RAW_REFS_BASE=https://raw.githubusercontent.com/djeknet/n8n-master-workflows/refs/heads/master
+   ```
+
+### **Frontend Deployment Options**
+
+**Option 1: GitHub Pages**
 ```bash
 npm run build
-# Deploy dist/ folder to your hosting service
+# Enable Pages in repository settings
 ```
 
-### **Backend Deployment**
-```bash
-cd backend
-# Set production environment variables
-npm start
-```
+**Option 2: Render Static Site**
+- Build Command: `npm run build`
+- Publish Directory: `dist`
+
+**Option 3: Vercel/Netlify**
+- Import repository
+- Build Command: `npm run build`
+- Output Directory: `dist`
 
 ### **Environment Variables for Production**
 ```env
-# Backend
-NODE_ENV=production
-PORT=3001
-QDRANT_URL=your_production_qdrant_url
-QDRANT_API_KEY=your_production_api_key
-OPENAI_API_KEY=your_openai_api_key
-
 # Frontend
-VITE_API_URL=https://your-api-domain.com
+VITE_API_URL=https://your-render-service.onrender.com
+
+# Backend (set in Render dashboard)
+NODE_ENV=production
+PORT=10000
+QDRANT_URL=your_qdrant_url
+QDRANT_API_KEY=your_qdrant_key
+OPENAI_API_KEY=your_openai_key
 ```
+
+📖 **Detailed deployment guide**: See [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ## 🤝 Contributing
 

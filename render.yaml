@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: n8n-workflow-finder-api
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GITHUB_RAW_REFS_BASE
+        value: https://raw.githubusercontent.com/djeknet/n8n-master-workflows/refs/heads/master

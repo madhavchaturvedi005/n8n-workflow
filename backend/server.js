@@ -8,7 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-frontend-domain.com', 'https://madhavchaturvedi005.github.io']
+    : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Configuration
@@ -296,10 +301,11 @@ app.post("/api/workflow-details", async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 n8n Workflow AI API server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
   console.log(`🔍 Search endpoint: http://localhost:${PORT}/api/search`);
   console.log(`📋 Setup instructions: http://localhost:${PORT}/api/setup-instructions`);
   console.log(`📄 Workflow details: http://localhost:${PORT}/api/workflow-details`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
