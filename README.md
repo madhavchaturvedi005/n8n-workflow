@@ -79,13 +79,13 @@ cd n8n-workflow-finder
 npm install
 
 # Install backend dependencies
-cd n8n-workflow-ai
+cd backend
 npm install
 ```
 
 ### 2. Environment Configuration
 
-**Backend** (`.env` in `n8n-workflow-ai/`):
+**Backend** (`.env` in `backend/`):
 ```env
 QDRANT_URL=https://your-qdrant-instance.com:6333
 QDRANT_API_KEY=your_qdrant_api_key
@@ -101,7 +101,7 @@ VITE_API_URL=http://localhost:3001
 
 ### 3. Index Workflows (First Time Setup)
 ```bash
-cd n8n-workflow-ai
+cd backend
 npm run store
 ```
 
@@ -115,7 +115,7 @@ npm run store
 **Option B: Start Individually**
 ```bash
 # Terminal 1: Backend API
-cd n8n-workflow-ai
+cd backend
 npm run dev
 
 # Terminal 2: Frontend UI
@@ -183,7 +183,7 @@ n8n-workflow-finder/
 │   ├── services/                # API service layer
 │   │   └── workflowApi.ts       # Backend API integration
 │   └── pages/                   # Application pages
-├── n8n-workflow-ai/             # Backend API server
+├── backend/                     # Backend API server
 │   ├── server.js                # Express server & API routes
 │   ├── searchWorkflow.js        # Search functionality
 │   ├── storeInQdrant.js         # Data indexing script
@@ -243,7 +243,7 @@ curl -X POST http://localhost:3001/api/setup-instructions \
 
 ### **Backend API Testing**
 ```bash
-cd n8n-workflow-ai
+cd backend
 npm run test-api
 ```
 
@@ -274,7 +274,7 @@ npm run build
 
 ### **Backend Deployment**
 ```bash
-cd n8n-workflow-ai
+cd backend
 # Set production environment variables
 npm start
 ```

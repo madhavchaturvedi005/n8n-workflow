@@ -27,7 +27,7 @@
 
 ## 🏗️ Technical Implementation
 
-### Backend Changes (`n8n-workflow-ai/server.js`)
+### Backend Changes (`backend/server.js`)
 ```javascript
 // New LLM functions
 async function generateWorkflowDescription(workflowTitle, nodes)
@@ -101,7 +101,7 @@ async getSetupInstructions(workflowName: string, nodes: string[]): Promise<strin
 
 ### Environment Variables
 ```bash
-# Backend (.env in n8n-workflow-ai/)
+# Backend (.env in backend/)
 OPENAI_API_KEY=your_openai_key  # Required for LLM features
 QDRANT_URL=your_qdrant_url
 QDRANT_API_KEY=your_qdrant_key
@@ -114,7 +114,7 @@ VITE_API_URL=http://localhost:3001
 
 ### API Tests
 ```bash
-cd n8n-workflow-ai
+cd backend
 npm run test-api  # Tests both search and health endpoints
 ```
 

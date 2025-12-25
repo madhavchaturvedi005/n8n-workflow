@@ -18,7 +18,7 @@ Frontend (React + Vite)     Backend (Node.js + Express)     AI Services
 
 1. **Start Backend API:**
    ```bash
-   cd n8n-workflow-ai
+   cd backend
    npm run dev
    ```
    Server runs on: http://localhost:3001
@@ -63,7 +63,7 @@ Frontend (React + Vite)     Backend (Node.js + Express)     AI Services
 
 Test the API connection:
 ```bash
-cd n8n-workflow-ai
+cd backend
 npm run test-api
 ```
 
@@ -86,9 +86,9 @@ Expected output:
 ### 📁 Key Files Added/Modified
 
 #### Backend:
-- `n8n-workflow-ai/server.js` - Main API server
-- `n8n-workflow-ai/package.json` - Updated with Express and CORS
-- `n8n-workflow-ai/test-api.js` - API testing script
+- `backend/server.js` - Main API server
+- `backend/package.json` - Updated with Express and CORS
+- `backend/test-api.js` - API testing script
 
 #### Frontend:
 - `src/services/workflowApi.ts` - API service layer

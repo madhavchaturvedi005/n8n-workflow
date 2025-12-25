@@ -23,7 +23,7 @@ npm install
 
 # Install backend dependencies
 echo "Installing backend dependencies..."
-cd n8n-workflow-ai
+cd backend
 npm install
 cd ..
 
@@ -40,7 +40,7 @@ echo ""
 trap 'kill $(jobs -p)' EXIT
 
 # Start backend server
-cd n8n-workflow-ai
+cd backend
 npm run dev &
 BACKEND_PID=$!
 
