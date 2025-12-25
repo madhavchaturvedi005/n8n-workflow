@@ -8,10 +8,33 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? [
+      'https://n8n-workflow-cyan.vercel.app',
+      'https://madhavchaturvedi005.github.io',
+      process.env.FRONTEND_URL,
+      // Add more production domains as needed
+    ].filter(Boolean) // Remove undefined values
+  : [
+      'http://localhost:3000', 
+      'http://localhost:5173', 
+      'http://localhost:8080', 
+      'http://localhost:8081'
+    ];
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com', 'https://madhavchaturvedi005.github.io']
-    : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log(`CORS blocked origin: ${origin}`);
+      console.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -308,4 +331,5 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`📋 Setup instructions: http://localhost:${PORT}/api/setup-instructions`);
   console.log(`📄 Workflow details: http://localhost:${PORT}/api/workflow-details`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🔗 Allowed CORS origins: ${allowedOrigins.join(', ')}`);
 });

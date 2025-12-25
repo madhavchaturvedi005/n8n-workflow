@@ -10,6 +10,8 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: FRONTEND_URL
+        value: https://n8n-workflow-cyan.vercel.app
       - key: QDRANT_URL
         sync: false
       - key: QDRANT_API_KEY
