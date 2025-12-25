@@ -16,11 +16,11 @@ const examplePrompts = [
   "Post to social media on a schedule",
   "Send email notifications for website downtime",
   "Create Trello cards from new form submissions",
-  "Backup files to Google Drive daily",
+  "AI Agent for realtime insights on meetings",
   "Send SMS alerts for critical system errors",
   "Update CRM when new leads come in",
-  "Generate reports and email them weekly",
-  "Monitor RSS feeds and post updates"
+  "Manage Google Calendar Events via Telegram with Gemini AI Assistant",
+  "Generate Job Automation Analysis with GPT 4 Tavily Telegram"
 ];
 
 export function HeroSection({ searchQuery, onSearchChange, onSearch, isLoading }: HeroSectionProps) {
